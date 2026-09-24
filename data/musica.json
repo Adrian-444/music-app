@@ -1,0 +1,92 @@
+{
+    "usuario": "Adrian",
+    "categorias": ["Todas", "Fiesta", "Blues", "Triste", "Hip Hop"],
+    "canciones": [
+        {
+            "id": "1",
+            "titulo": "Starboy Remix",
+            "artista": "The Weeknd",
+            "album": "Starboy Remix",
+            "categoria": "Fiesta",
+            "duracion": "4:21",
+            "imagen": "https://picsum.photos/seed/starboy/400"
+        },
+        {
+            "id": "2",
+            "titulo": "Superman",
+            "artista": "Eminem",
+            "album": "The Eminem Show",
+            "categoria": "Hip Hop",
+            "duracion": "5:50",
+            "imagen": "https://picsum.photos/seed/eminem/400"
+        },
+        {
+            "id": "3",
+            "titulo": "We Don't Talk",
+            "artista": "Kyanu & Lori",
+            "album": "Night Drive",
+            "categoria": "Triste",
+            "duracion": "3:12",
+            "imagen": "https://picsum.photos/seed/wedont/400"
+        },
+        {
+            "id": "4",
+            "titulo": "Blue Nights",
+            "artista": "B.B. Green",
+            "album": "Midnight Blues",
+            "categoria": "Blues",
+            "duracion": "4:05",
+            "imagen": "https://picsum.photos/seed/bluenights/400"
+        },
+        {
+            "id": "5",
+            "titulo": "Lose Yourself",
+            "artista": "Eminem",
+            "album": "8 Mile",
+            "categoria": "Hip Hop",
+            "duracion": "5:26",
+            "imagen": "https://picsum.photos/seed/loseyourself/400"
+        }
+    ],
+    "colecciones": [
+        {
+            "id": "1",
+            "titulo": "TOP CANCIONES GLOBAL",
+            "descripcion": "Descubre 85 canciones",
+            "imagen": "https://picsum.photos/seed/topglobal/300"
+        },
+        {
+            "id": "2",
+            "titulo": "PURO SOUL",
+            "descripcion": "Descubre 40 canciones",
+            "imagen": "https://picsum.photos/seed/puresoul/300"
+        }
+    ],
+    "playlists": [
+        { "id": "1", "titulo": "Vibras Chill", "canciones": 24, "imagen": "https://picsum.photos/seed/chill/200" },
+        {
+            "id": "2",
+            "titulo": "Mix para Entrenar",
+            "canciones": 18,
+            "imagen": "https://picsum.photos/seed/workout/200"
+        }
+    ],
+    "explorar": [
+        { "id": "1", "tag": "#TechnoBeats", "imagen": "https://picsum.photos/seed/techno/300/400" },
+        { "id": "2", "tag": "#BluesBeats", "imagen": "https://picsum.photos/seed/blues/300/400" },
+        { "id": "3", "tag": "#FolkTales", "imagen": "https://picsum.photos/seed/folk/300/400" }
+    ],
+    "generos": [
+        { "id": "1", "nombre": "Hip Hop", "color": "#1BA3C6", "imagen": "https://picsum.photos/seed/g-hiphop/150" },
+        {
+            "id": "2",
+            "nombre": "Electrónica",
+            "color": "#9B1FE8",
+            "imagen": "https://picsum.photos/seed/g-electronic/150"
+        },
+        { "id": "3", "nombre": "Pop", "color": "#13B39B", "imagen": "https://picsum.photos/seed/g-pop/150" },
+        { "id": "4", "nombre": "Fiesta", "color": "#E0209B", "imagen": "https://picsum.photos/seed/g-party/150" },
+        { "id": "5", "nombre": "Blues", "color": "#5B2BD6", "imagen": "https://picsum.photos/seed/g-blues/150" },
+        { "id": "6", "nombre": "Techno", "color": "#1E9FD8", "imagen": "https://picsum.photos/seed/g-techno/150" }
+    ]
+}

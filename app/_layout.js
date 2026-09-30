@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { MD3DarkTheme, PaperProvider } from "react-native-paper";
+import { PlaylistsProvider } from "../context/PlaylistsContext";
 
 const tema = {
     ...MD3DarkTheme,
@@ -19,11 +20,14 @@ const tema = {
 export default function RootLayout() {
     return (
         <PaperProvider theme={tema}>
-            <StatusBar style="light" />
-            <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: tema.colors.background } }}>
-                <Stack.Screen name="(tabs)" />
-                <Stack.Screen name="player/[id]" options={{ presentation: "modal" }} />
-            </Stack>
+            <PlaylistsProvider>
+                <StatusBar style="light" />
+                <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: tema.colors.background } }}>
+                    <Stack.Screen name="(tabs)" />
+                    <Stack.Screen name="player/[id]" options={{ presentation: "modal" }} />
+                    <Stack.Screen name="playlist/[id]" />
+                </Stack>
+            </PlaylistsProvider>
         </PaperProvider>
     );
 }

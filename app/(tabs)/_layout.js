@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import { BottomNavigation, Icon } from "react-native-paper";
 
-const ICONOS = { index: "home", buscar: "magnify" };
+const ICONOS = { index: "home", buscar: "magnify", playlists: "playlist-music" };
 
 export default function TabsLayout() {
     return (
@@ -19,6 +19,7 @@ export default function TabsLayout() {
         >
             <Tabs.Screen name="index" options={{ title: "Inicio" }} />
             <Tabs.Screen name="buscar" options={{ title: "Buscar" }} />
+            <Tabs.Screen name="playlists" options={{ title: "Playlists" }} />
         </Tabs>
     );
 }

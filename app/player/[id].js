@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Button, IconButton, ProgressBar, Text } from "react-native-paper";
+import { Button, IconButton, Menu, ProgressBar, Snackbar, Text } from "react-native-paper";
+import { CrearPlaylistDialog } from "../../components/CrearPlaylistDialog";
+import { usePlaylists } from "../../context/PlaylistsContext";
 import musica from "../../data/musica.json";
 
 export default function Player() {
@@ -10,8 +12,18 @@ export default function Player() {
     const { id } = useLocalSearchParams();
     const [favorito, setFavorito] = useState(false);
     const [reproduciendo, setReproduciendo] = useState(false);
+    const [menu, setMenu] = useState(false);
+    const [dialogo, setDialogo] = useState(false);
+    const [mensaje, setMensaje] = useState("");
+    const { playlists, crearPlaylist, agregarCancion } = usePlaylists();
 
     const cancion = musica.canciones.find(c => c.id === id);
+
+    const agregarA = (playlistId, nombre) => {
+        agregarCancion(playlistId, cancion.id);
+        setMenu(false);
+        setMensaje(`Agregada a ${nombre}`);
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -21,7 +33,28 @@ export default function Player() {
                     <Text variant="labelSmall" style={styles.gris}>REPRODUCIENDO DEL ÁLBUM</Text>
                     <Text variant="titleMedium" style={styles.negrita}>{cancion.album}</Text>
                 </View>
-                <IconButton icon="dots-vertical" mode="contained" />
+                <Menu
+                    visible={menu}
+                    onDismiss={() => setMenu(false)}
+                    anchor={<IconButton icon="dots-vertical" mode="contained" onPress={() => setMenu(true)} />}
+                >
+                    {playlists.map(p => (
+                        <Menu.Item
+                            key={p.id}
+                            leadingIcon="playlist-plus"
+                            title={`Agregar a ${p.nombre}`}
+                            onPress={() => agregarA(p.id, p.nombre)}
+                        />
+                    ))}
+                    <Menu.Item
+                        leadingIcon="plus"
+                        title="Nueva playlist…"
+                        onPress={() => {
+                            setMenu(false);
+                            setDialogo(true);
+                        }}
+                    />
+                </Menu>
             </View>
 
             <Image source={{ uri: cancion.imagen }} style={styles.portada} />
@@ -62,6 +95,16 @@ export default function Player() {
             <Button icon="chevron-down" textColor="#aaa" contentStyle={styles.letra}>
                 LETRA
             </Button>
+
+            <CrearPlaylistDialog
+                visible={dialogo}
+                onCerrar={() => setDialogo(false)}
+                onCrear={nombre => agregarA(crearPlaylist(nombre), nombre)}
+            />
+
+            <Snackbar visible={!!mensaje} onDismiss={() => setMensaje("")} duration={2000}>
+                {mensaje}
+            </Snackbar>
         </SafeAreaView>
     );
 }

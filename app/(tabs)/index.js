@@ -5,11 +5,13 @@ import { Avatar, Card, Chip, IconButton, List, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CancionCard } from "../../components/CancionCard";
 import { Seccion } from "../../components/Seccion";
+import { usePlaylists } from "../../context/PlaylistsContext";
 import musica from "../../data/musica.json";
 
 export default function Home() {
     const router = useRouter();
     const [categoria, setCategoria] = useState("Todas");
+    const { playlists } = usePlaylists();
 
     const canciones = musica.canciones.filter(c => categoria === "Todas" || c.categoria === categoria);
 
@@ -72,6 +74,16 @@ export default function Home() {
                 </ScrollView>
 
                 <Seccion titulo="Playlists" verTodo />
+                {playlists.map(p => (
+                    <List.Item
+                        key={`usuario-${p.id}`}
+                        title={p.nombre}
+                        description={`${p.canciones.length} canciones · Creada por ti`}
+                        onPress={() => router.push(`/playlist/${p.id}`)}
+                        left={() => <Avatar.Icon size={48} icon="playlist-music" />}
+                        right={props => <List.Icon {...props} icon="chevron-right" />}
+                    />
+                ))}
                 {musica.playlists.map(p => (
                     <List.Item
                         key={p.id}
